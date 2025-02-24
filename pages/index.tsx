@@ -1,115 +1,137 @@
-import Image from "next/image";
-import localFont from "next/font/local";
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { ArrowRight, Code2, Database, Layout, Sparkles, Smartphone } from "lucide-react";
+import Head from "next/head";
 
 export default function Home() {
   return (
-    <div
-      className={`${geistSans.variable} ${geistMono.variable} grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]`}
-    >
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              pages/index.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <>
+      <Head>
+        <title>Blink - AI Full Stack Engineer</title>
+        <meta name="description" content="Create beautiful websites and apps instantly with Blink - The world's #1 AI full stack engineer" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      <main className="min-h-screen">
+        {/* Hero Section */}
+        <div className="relative h-screen flex items-center justify-center overflow-hidden">
+          <div className="hero-gradient absolute inset-0 z-0" />
+          <div className="container mx-auto px-4 z-10">
+            <div className="text-center max-w-4xl mx-auto">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6">
+                Meet <span className="gradient-text">Blink</span>
+                <br />
+                Your AI Full Stack Engineer
+              </h1>
+              <p className="text-xl md:text-2xl mb-8 text-gray-300 typing">
+                Create beautiful websites and apps in seconds
+              </p>
+              <Button size="lg" className="bg-accent hover:bg-accent/90 text-white">
+                Start Creating <ArrowRight className="ml-2" />
+              </Button>
+            </div>
+          </div>
         </div>
+
+        {/* Features Section */}
+        <section className="py-20 bg-background/95">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 gradient-text">
+              One AI Engineer, Endless Possibilities
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                {
+                  icon: <Layout className="w-8 h-8 text-primary" />,
+                  title: "Beautiful UI Design",
+                  description: "Create stunning user interfaces with modern design principles and smooth animations"
+                },
+                {
+                  icon: <Database className="w-8 h-8 text-secondary" />,
+                  title: "Full Stack Development",
+                  description: "Handle everything from frontend to backend, databases, and APIs"
+                },
+                {
+                  icon: <Smartphone className="w-8 h-8 text-accent" />,
+                  title: "Mobile Apps",
+                  description: "Build native mobile applications for iOS and Android platforms"
+                }
+              ].map((feature, index) => (
+                <Card key={index} className="p-6 bg-card/50 backdrop-blur border-primary/10 hover:border-primary/20 transition-all duration-300">
+                  <div className="floating">
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-xl font-semibold mt-4 mb-2">{feature.title}</h3>
+                  <p className="text-gray-400">{feature.description}</p>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* How it Works */}
+        <section className="py-20 bg-accent/5">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
+              How <span className="gradient-text">Blink</span> Works
+            </h2>
+            <div className="max-w-3xl mx-auto">
+              <div className="space-y-8">
+                {[
+                  {
+                    step: "1",
+                    title: "Describe Your Vision",
+                    description: "Tell Blink what you want to build - a website, web app, or mobile app"
+                  },
+                  {
+                    step: "2",
+                    title: "AI-Powered Development",
+                    description: "Blink creates beautiful UI, writes clean code, and sets up your infrastructure"
+                  },
+                  {
+                    step: "3",
+                    title: "Launch Your Product",
+                    description: "Get a production-ready application with all the features you need"
+                  }
+                ].map((step, index) => (
+                  <div key={index} className="flex items-start gap-4">
+                    <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
+                      {step.step}
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
+                      <p className="text-gray-400">{step.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-20 relative overflow-hidden">
+          <div className="hero-gradient absolute inset-0" />
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="text-center max-w-3xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                Ready to Build Something Amazing?
+              </h2>
+              <p className="text-xl text-gray-300 mb-8">
+                Let Blink turn your ideas into reality
+              </p>
+              <div className="flex gap-4 justify-center">
+                <Button size="lg" className="bg-accent hover:bg-accent/90">
+                  Start Building <Sparkles className="ml-2" />
+                </Button>
+                <Button size="lg" variant="outline">
+                  View Examples <Code2 className="ml-2" />
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+    </>
   );
 }
