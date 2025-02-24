@@ -3,6 +3,7 @@ import { Card } from "@/components/ui/card";
 import { ArrowRight, Code2, Database, Layout, Sparkles, Smartphone, Star, Zap } from "lucide-react";
 import Head from "next/head";
 import { motion } from "framer-motion";
+import { TypeWriter } from "@/components/ui/type-writer";
 
 export default function Home() {
   return (
@@ -35,12 +36,11 @@ export default function Home() {
                   Your AI Full Stack Engineer
                 </h1>
               </motion.div>
-              <p className="text-xl md:text-2xl mb-8 text-gray-300 typing">
-                Create beautiful websites and apps in seconds
-              </p>
+              <TypeWriter />
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                className="mt-8"
               >
                 <Button size="lg" className="bg-accent hover:bg-accent/90 text-white px-8 py-6 text-lg">
                   Start Creating <ArrowRight className="ml-2" />
